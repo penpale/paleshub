@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PalesHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:       #ff6eb4;
+      --pink-dark:  #d94f8f;
+      --pink-light: #ffd6ec;
+      --pink-pale:  #fff0f8;
+      --white:      #ffffff;
+      --shadow:     #c2185b;
+      --text:       #4a0030;
+    }
+
+    body {
+      background-color: var(--pink-pale);
+      background-image:
+        linear-gradient(var(--pink-light) 1px, transparent 1px),
+        linear-gradient(90deg, var(--pink-light) 1px, transparent 1px);
+      background-size: 16px 16px;
+      font-family: 'Press Start 2P', monospace;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--pink);
+      border-bottom: 4px solid var(--shadow);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 56px;
+      position: relative;
+    }
+
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0; right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--pink-dark) 0px, var(--pink-dark) 8px,
+        transparent 8px, transparent 16px
+      );
+    }
+
+    .nav-brand {
+      font-size: 0.7rem;
+      color: var(--white);
+      text-shadow: 2px 2px 0 var(--shadow);
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: var(--white);
+      color: var(--pink-dark);
+      text-decoration: none;
+      font-size: 0.45rem;
+      border: 2px solid var(--shadow);
+      box-shadow: 3px 3px 0 var(--shadow);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .nav-links a:hover {
+      background: var(--pink-light);
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--shadow);
+    }
+
+    .nav-links a:active {
+      transform: translate(3px, 3px);
+      box-shadow: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 4vw, 1.8rem);
+      color: var(--pink-dark);
+      text-shadow: 4px 4px 0 var(--shadow);
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 0.45rem;
+      color: var(--pink);
+      margin-bottom: 3rem;
+      line-height: 2;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 12px; height: 16px;
+      background: var(--pink-dark);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── CARDS ── */
+    .grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem 2rem 4rem;
+    }
+
+    .card {
+      display: block;
+      background: var(--white);
+      border: 4px solid var(--pink-dark);
+      box-shadow: 6px 6px 0 var(--shadow);
+      padding: 2rem 1.5rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      width: 220px;
+      transition: transform 0.1s, box-shadow 0.1s;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 4px; left: 4px; right: 4px; bottom: 4px;
+      border: 2px dashed var(--pink-light);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
+
+    .card:active {
+      transform: translate(6px, 6px);
+      box-shadow: none;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      display: block;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-title {
+      font-size: 0.55rem;
+      color: var(--pink-dark);
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-desc {
+      font-size: 0.38rem;
+      color: #aa5577;
+      text-align: center;
+      line-height: 2;
+    }
+
+    .card-btn {
+      display: block;
+      margin: 1.2rem auto 0;
+      width: fit-content;
+      padding: 0.4rem 0.8rem;
+      background: var(--pink);
+      color: var(--white);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      border: 2px solid var(--shadow);
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
+
+    .card:hover .card-btn {
+      background: var(--pink-dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.35rem;
+      color: var(--pink);
+      border-top: 4px solid var(--pink-light);
+      background: var(--white);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-brand">✦ PALE's HOME</span>
+    <div class="nav-links">
+      <a href="todolist_hmp/todo.html">TO-DO LIST</a>
+      <a href="pomodoro_hmp/index.html">POMODORO</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1 class="hero-title">PALE's HOME<span class="cursor"></span></h1>
+    <p class="hero-sub">// CHOISIS TON APPLICATION //</p>
+  </div>
+
+  <div class="grid">
+
+    <a class="card" href="todolist_hmp/todo.html">
+      <span class="card-icon">📋</span>
+      <div class="card-title">TO-DO LIST</div>
+      <p class="card-desc">Organise tes tâches<br>et tu dead ça !</p>
+      <span class="card-btn">► JOUER</span>
+    </a>
+
+    <a class="card" href="pomodoro_hmp/index.html">
+      <span class="card-icon">🍅</span>
+      <div class="card-title">POMODORO</div>
+      <p class="card-desc">EST CE QUE TU VEUX <br> ABANDONNER ?!</p>
+      <span class="card-btn">► JOUER</span>
+    </a>
+
+  </div>
+
+</body>
+</html>

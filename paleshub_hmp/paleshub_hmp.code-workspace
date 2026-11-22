@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "paleshub_hmp",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "paleshub_hmp"
+	}
+}
